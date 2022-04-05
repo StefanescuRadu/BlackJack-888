@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Blackjack from "./Components/Blackjack";
+import Blackjack from "./components/Blackjack";
 
 function App() {
     return (

@@ -58,8 +58,19 @@ p{
 }
 
 .flex{
-  position: relative;
-  top:150px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-clicked{
+  background-color: black;
+  color:white;
+}
+
+.card{
+  width: 100px;
+  margin:10px;
+  background-color: grey;
 }
 
 
