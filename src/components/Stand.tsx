@@ -28,7 +28,7 @@ const Stand = () => {
 
     const standOut = () => {
         setTimeout(() => {
-            handleStand()
+            handleStand();
         }, 3000)
     }
 
