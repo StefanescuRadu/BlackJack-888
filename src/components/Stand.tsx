@@ -11,6 +11,7 @@ import {
 } from "../Store";
 import {fetchPost} from "../Util";
 import {useAtom} from "jotai";
+import {useEffect} from "react";
 
 const Stand = () => {
 
@@ -19,11 +20,17 @@ const Stand = () => {
     const [, setRoundsPlayed] = useAtom(ROUNDS_PLAYED);
     const [, setTotalWin] = useAtom(TOTAL_WIN_AMOUNT);
     const [roundEnded] = useAtom(ROUND_ENDED);
-    const [, setPlayerCards] = useAtom(PLAYER_CARDS);
+    const [playerCards, setPlayerCards] = useAtom(PLAYER_CARDS);
     const [, setDealerCards] = useAtom(DEALER_CARDS);
     const [, setWinAmount] = useAtom(WIN_AMOUNT);
     const [, setBet] = useAtom(BET);
-    const [, setBalance] = useAtom(BALANCE);
+    const [balance, setBalance] = useAtom(BALANCE);
+
+    const standOut = () => {
+        setTimeout(() => {
+            handleStand()
+        }, 3000)
+    }
 
     const handleStand = async () => {
         const response = await fetchPost("/stand", {
@@ -39,9 +46,14 @@ const Stand = () => {
         setBalance(10);
     }
 
+    useEffect(() => {
+        balance == 0 && standOut()
+
+    }, [balance])
+
     return (
         <div>
-            {session && roundEnded &&
+            {session && roundEnded && playerCards.length == 0 &&
             <div>
                 <button onClick={handleStand}>Stand</button>
             </div>}

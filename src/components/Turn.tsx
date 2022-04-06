@@ -21,6 +21,7 @@ const Turn = () => {
         setRoundEnded(response!.data["roundEnded"])
         setWinAmount(response!.data["winAmount"])
         setBalance(response!.data["currentBalance"])
+
     }
 
     const handleHit = async () => {

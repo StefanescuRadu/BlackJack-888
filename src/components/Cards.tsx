@@ -11,30 +11,19 @@ const Cards = () => {
         <div>
             {session &&
             <div>
-                {playerCards &&
-                <div>
+                {playerCards.length != 0 && <div>
                     <h1>Player Cards</h1>
                     <div className="flex">
-                        {playerCards.map((card,index) => (
-                            <div key={index} className="card">
-                                <p>{card["rank"]}</p>
-                                <p>{card["suite"]}</p>
-                            </div>
-                        ))}
+                        {playerCards.map((card, index) => (
+                            <div key={index} className="card"><p>{card["rank"]}</p><p>{card["suite"]}</p></div>))}
                     </div>
-
                 </div>}
 
-                {dealerCards &&
-                <div>
+                {dealerCards.length != 0 && <div>
                     <h1>Dealer Cards</h1>
                     <div className="flex">
-                        {dealerCards.map((card,index) => (
-                            <div key={index} className="card">
-                                <p>{card["rank"]}</p>
-                                <p>{card["suite"]}</p>
-                            </div>
-                        ))}
+                        {dealerCards.map((card, index) => (
+                            <div key={index} className="card"><p>{card["rank"]}</p><p>{card["suite"]}</p></div>))}
                     </div>
                 </div>
                 }

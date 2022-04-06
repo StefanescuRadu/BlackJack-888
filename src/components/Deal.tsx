@@ -1,17 +1,27 @@
 import {BALANCE, BET, DEALER_CARDS, PLAYER_CARDS, ROUND_ENDED, SESSION_ID, WIN_AMOUNT} from "../Store";
 import {fetchPost} from "../Util";
 import {useAtom} from "jotai";
+import {useEffect} from "react";
 
 const Deal = () => {
 
     const [session] = useAtom(SESSION_ID);
     const [, setDealerCards] = useAtom(DEALER_CARDS);
-    const [, setPlayerCards] = useAtom(PLAYER_CARDS);
+    const [playerCards, setPlayerCards] = useAtom(PLAYER_CARDS);
     const [roundEnded, setRoundEnded] = useAtom(ROUND_ENDED);
-    const [, setWinAmount] = useAtom(WIN_AMOUNT);
-    const [bet] = useAtom(BET);
+    const [winAmount, setWinAmount] = useAtom(WIN_AMOUNT);
+    const [bet, setBet] = useAtom(BET);
     const [, setBalance] = useAtom(BALANCE);
 
+    const resetBoard = () => {
+
+        setTimeout(() => {
+            setBet(null);
+            setDealerCards([])
+            setWinAmount(null);
+            setPlayerCards([]);
+        }, 5000)
+    }
     const handleDeal = async () => {
         const response = await fetchPost("/deal", {
             "bet": bet,
@@ -23,9 +33,16 @@ const Deal = () => {
         setWinAmount(response!.data["winAmount"])
         setBalance(response!.data["currentBalance"])
     }
+
+    useEffect(() => {
+
+        winAmount && resetBoard();
+
+    }, [winAmount])
+
     return (
         <div>
-            {session && roundEnded &&
+            {session && roundEnded && playerCards.length == 0 &&
             <div>
                 {bet && <button onClick={handleDeal}>Deal</button>}
             </div>}
