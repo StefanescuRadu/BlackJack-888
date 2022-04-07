@@ -1,5 +1,3 @@
-
-
 import Sit from "./Sit";
 import Page from "./Page";
 import Deal from "./Deal";

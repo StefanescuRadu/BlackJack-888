@@ -11,6 +11,7 @@ const Sit = () => {
     const handleChange = (e: any) => {
         setBalance(e.target.value)
     }
+
     const handleClick = async () => {
         const result = await fetchPost("/sit", {
             "balance": balance
@@ -31,4 +32,5 @@ const Sit = () => {
         </div>
     )
 }
+
 export default Sit;

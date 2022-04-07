@@ -12,7 +12,6 @@ const Result = () => {
             {session && roundEnded && winAmount! > 0 && <h1>You won: {winAmount}</h1>}
             {session && roundEnded && winAmount! < 0 && <h1>You lost: {winAmount}</h1>}
         </div>
-
     )
 }
 

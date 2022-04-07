@@ -13,15 +13,6 @@ const Deal = () => {
     const [bet, setBet] = useAtom(BET);
     const [, setBalance] = useAtom(BALANCE);
 
-    const resetBoard = () => {
-
-        setTimeout(() => {
-            setBet(null);
-            setDealerCards([])
-            setWinAmount(null);
-            setPlayerCards([]);
-        }, 5000)
-    }
     const handleDeal = async () => {
         const response = await fetchPost("/deal", {
             "bet": bet,
@@ -35,18 +26,24 @@ const Deal = () => {
     }
 
     useEffect(() => {
-
-        winAmount && resetBoard();
-
-    }, [winAmount])
+        if (winAmount) {
+            setTimeout(() => {
+                setBet(null);
+                setDealerCards([])
+                setWinAmount(null);
+                setPlayerCards([]);
+            }, 5000)
+        }
+    }, [winAmount, setBet, setDealerCards, setWinAmount, setPlayerCards])
 
     return (
         <div>
-            {session && roundEnded && playerCards.length == 0 &&
+            {session && roundEnded && playerCards.length === 0 &&
             <div>
                 {bet && <button onClick={handleDeal}>Deal</button>}
             </div>}
         </div>
     )
 }
+
 export default Deal;

@@ -15,9 +15,8 @@ const Bet = () => {
     }
 
     return (
-
         <div>
-            {session && roundEnded && playerCards.length == 0 &&
+            {session && roundEnded && playerCards.length === 0 &&
             <div>
                 {bet && <p>Bet value: {bet}</p>}
                 {betValues!.map((bet, index) => {

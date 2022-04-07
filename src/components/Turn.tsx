@@ -21,7 +21,6 @@ const Turn = () => {
         setRoundEnded(response!.data["roundEnded"])
         setWinAmount(response!.data["winAmount"])
         setBalance(response!.data["currentBalance"])
-
     }
 
     const handleHit = async () => {
@@ -44,8 +43,7 @@ const Turn = () => {
                 <button value="stay" onClick={() => handleStay()}>Stay</button>
             </div>}
         </div>
-
-
     )
 }
+
 export default Turn;

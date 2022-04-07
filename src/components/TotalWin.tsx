@@ -6,13 +6,14 @@ const TotalWin = () => {
     const [roundsPlayed] = useAtom(ROUNDS_PLAYED);
     const [session] = useAtom(SESSION_ID);
     const [totalWin] = useAtom(TOTAL_WIN_AMOUNT);
-    return(
+
+    return (
         <div>
-            {roundsPlayed!= null && !session &&
+            {roundsPlayed != null && !session &&
             <div>
                 <p>You have played {roundsPlayed} rounds!</p>
-                {totalWin!>=0 && <p>You have won a total of {totalWin} $</p>}
-                {totalWin!<0 && <p>You have lost a total of {totalWin} $</p>}
+                {totalWin! >= 0 && <p>You have won a total of {totalWin} $</p>}
+                {totalWin! < 0 && <p>You have lost a total of {totalWin} $</p>}
             </div>
             }
         </div>

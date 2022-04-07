@@ -11,7 +11,7 @@ const Cards = () => {
         <div>
             {session &&
             <div>
-                {playerCards.length != 0 && <div>
+                {playerCards.length !== 0 && <div>
                     <h1>Player Cards</h1>
                     <div className="flex">
                         {playerCards.map((card, index) => (
@@ -22,7 +22,7 @@ const Cards = () => {
                     </div>
                 </div>}
 
-                {dealerCards.length != 0 && <div>
+                {dealerCards.length !== 0 && <div>
                     <h1>Dealer Cards</h1>
                     <div className="flex">
                         {dealerCards.map((card, index) => (
